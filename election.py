@@ -1,8 +1,12 @@
 from electorate import *
-from matplotlib import pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 import os
 import glob
+
+class Candidate:
+    pass
+
 
 if __name__=='__main__':
 
@@ -23,6 +27,7 @@ if __name__=='__main__':
     blocs = [republicans, democrats, independents, libs, greens]
 
     issues = {'Abortion': [[-0.9, 0.1], [0.8, 0.2], [0.6, 0.4], [0.9, 0.1], [0.95, 0.09]], 'Gun Rights': [[0.95, 0.1], [-0.8, 0.3], [0.0, 0.5], [0.99, 0.05], [-0.7, 0.4]]}
+    # dict = {key1:val1, key2:val2, ... }
     
     smc_electorate = Electorate(blocs=blocs, issues=issues)
     smc_electorate.plot()
@@ -34,7 +39,7 @@ if __name__=='__main__':
     candidates = [asterix, obelix, getafix]
 
     pprint('Rank for first Republican voter')
-    pprint(republicans.voters[0].rank(candidates))
+    pprint(republicans.voters[0].rank(candidates)) # return voter's preference for candidates
 
 
     spectrum = smc_electorate.spectrum

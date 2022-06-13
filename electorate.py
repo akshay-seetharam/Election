@@ -1,5 +1,5 @@
 import numpy as np
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 import random
 from pprint import pprint
 import math
@@ -64,11 +64,19 @@ class Bloc:
 class Voter:
     def __init__(self, right_left_score=0.0, tribalism=0.25):
         self.right_left_score = right_left_score
+        self.tribalism = tribalism
         self.issues = {}
 
-    def add_issue(self, issue, mean=0, sd=1):
+    def add_issue(self, issue, mean=0, sd=1): # TODO: Add weight
         self.issues[issue] = np.random.normal(mean, sd)
 
+    def rank(self, candidates):
+        """
+        given a list of candidates and their positions on issues, return a ranked list based on the voter's positions
+        :param candidates:
+        :return:
+        """
+        return 'sam to write'
     
 if __name__=='__main__':
     republicans = Bloc(mean=1.0, sd=0.3, quantity=1000, name="Republicans")
