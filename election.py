@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 import os
 import glob
 
-#hello -Sam
-
 class Candidate:
     pass
 
