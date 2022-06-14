@@ -5,10 +5,11 @@ import os
 import glob
 
 class Candidate:
-    def __init__(self, name, right_left_score, issues, popularity):
+    def __init__(self, name, right_left_score, issues, bloc, popularity):
         self.name = name
         self.right_left_score = right_left_score
         self.issues = issues
+        self.bloc = bloc
         self.popularity = popularity
 
     def __str__(self):
@@ -39,11 +40,12 @@ if __name__=='__main__':
     smc_electorate = Electorate(blocs=blocs, issues=issues)
     smc_electorate.plot()
 
-    asterix = Candidate('asterix', 0.1, zip(issues.keys(), [0.5, 0.7])) # asterix is generally pro-choice and loves guns
-    obelix = Candidate('obelix', 0.3, zip(issues.keys(), [-0.8, -0.4])) # obelix is a prude and is jealous of people who don't need the potion to be powerful
-    getafix = Candidate('getafix', 0.4, zip(issues.keys(), [0.95, 0.88])) # getafix invented the pill and gunpowder (by accident)
+    trump = Candidate('Donald John Trump', 0.7, dict(zip(issues.keys(), [-0.95, 0.8])), republicans)
+    hillary = Candidate('Joseph Robinette Biden Jr.', dict(zip(issues.keys(), [0.75, -0.9])), democrats)
+    stein = Candidate('Jill Stein', dict(zip(issues.keys(), [0.9, -0.7])), greens)
+    johnson = Candidate('Gary Johnson', dict(zip(issues.keys(), [0.9, 0.95])), libs)
 
-    candidates = [asterix, obelix, getafix]
+    candidates = [trump, hillary, stein, johnson]
     for i in candidates:
         print(i)
 
