@@ -67,6 +67,9 @@ class Voter:
         self.tribalism = tribalism
         self.issues = {}
 
+    def __str__(self):
+        return f'Voter with right/left score {self.right_left_score} and tribalism {self.tribalism}'
+
     def add_issue(self, issue, mean=0, sd=1): # TODO: Add weight
         self.issues[issue] = np.random.normal(mean, sd)
 

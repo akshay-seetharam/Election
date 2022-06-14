@@ -5,7 +5,13 @@ import os
 import glob
 
 class Candidate:
-    pass
+    def __init__(self, name, right_left_score, issues):
+        self.name = name
+        self.right_left_score = right_left_score
+        self.issues = issues
+
+    def __str__(self):
+        return f'{self.name} is a candidate whose right/left score is {self.right_left_score}'
 
 
 if __name__=='__main__':
@@ -32,29 +38,13 @@ if __name__=='__main__':
     smc_electorate = Electorate(blocs=blocs, issues=issues)
     smc_electorate.plot()
 
-    asterix = Candidate('asterix', issues.keys())
-    obelix = Candidate('obelix', issues.keys())
-    getafix = Candidate('getafix', issues.keys())
+    asterix = Candidate('asterix', 0.1, zip(issues.keys(), [0.5, 0.7])) # asterix is generally pro-choice and loves guns
+    obelix = Candidate('obelix', 0.3, zip(issues.keys(), [-0.8, -0.4])) # obelix is a prude and is jealous of people who don't need the potion to be powerful
+    getafix = Candidate('getafix', 0.4, zip(issues.keys(), [0.95, 0.88])) # getafix invented the pill and gunpowder (by accident)
 
     candidates = [asterix, obelix, getafix]
+    for i in candidates:
+        print(i)
 
     pprint('Rank for first Republican voter')
     pprint(republicans.voters[0].rank(candidates)) # return voter's preference for candidates
-
-
-    spectrum = smc_electorate.spectrum
-    abortion = smc_electorate.issue_spectrum('Abortion')
-    guns = smc_electorate.issue_spectrum('Gun Rights')
-
-    plottables = [spectrum, abortion, guns]
-
-    plt.clf()
-    
-    fig, axs = plt.subplots(ncols=plottables)
-
-    pprint(spectrum)
-    
-    axs[0].plot(spectrum, label=str(blocs))
-    plt.show()
-    
-    plt.savefig('imgs/3d.png')
