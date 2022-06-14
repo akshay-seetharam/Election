@@ -52,7 +52,7 @@ class Bloc:
         self.name = name
         self.voters = []
         for i in range(quantity):
-            self.voters.append(Voter(right_left_score=np.random.normal(mean, sd)))
+            self.voters.append(Voter(right_left_score=np.random.normal(mean, sd), bloc=self))
             
     def __str__(self):
         return f'{self.name}: mean {self.mean}, sd {self.sd}, quantity {self.quantity}'
@@ -62,10 +62,11 @@ class Bloc:
             voter.add_issue(issue, mean, sd)
 
 class Voter:
-    def __init__(self, right_left_score=0.0, tribalism=0.25):
+    def __init__(self, right_left_score=0.0, tribalism=0.25, bloc):
         self.right_left_score = right_left_score
         self.tribalism = tribalism
         self.issues = {}
+        self.bloc = bloc
 
     def __str__(self):
         return f'Voter with right/left score {self.right_left_score} and tribalism {self.tribalism}'
