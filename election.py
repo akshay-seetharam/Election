@@ -5,10 +5,11 @@ import os
 import glob
 
 class Candidate:
-    def __init__(self, name, right_left_score, issues):
+    def __init__(self, name, right_left_score, issues, popularity):
         self.name = name
         self.right_left_score = right_left_score
         self.issues = issues
+        self.popularity = popularity
 
     def __str__(self):
         return f'{self.name} is a candidate whose right/left score is {self.right_left_score}'

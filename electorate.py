@@ -62,7 +62,7 @@ class Bloc:
             voter.add_issue(issue, mean, sd)
 
 class Voter:
-    def __init__(self, right_left_score=0.0, tribalism=0.25, bloc):
+    def __init__(self, right_left_score=0.0, tribalism=0.25, bloc=None):
         self.right_left_score = right_left_score
         self.tribalism = tribalism
         self.issues = {}
