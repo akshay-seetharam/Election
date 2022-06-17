@@ -75,12 +75,35 @@ class Voter:
         self.issues[issue] = np.random.normal(mean, sd), np.random.random() # position, weight
 
     def rank(self, candidates):
-        """
-        given a list of candidates and their positions on issues, return a ranked list based on the voter's positions
-        :param candidates:
-        :return:
-        """
-        return 'sam to write'
+        # create factor matrix
+        F = np.identity(len(self.issues) + 2) # factors are every issue, tribalism, and left-right alignment
+        i = 0
+        while i < F.shape[0]:
+            j = i + 1
+            while j < F.shape[1]:
+                F[i][j] = 5 * random.random() # maximum difference between two issues' weights is quintuple
+                F[j][i] = 1.0 / F[i][j]
+                j += 1
+            i += 1
+
+        # create subfactor matrices
+        subfactors = np.zeros((len(self.issues), len(candidates), len(candidates)))
+        i = 0
+        while i < subfactors.shape[0]:
+            j = 0
+            while j < subfactors.shape[1]:
+                k = j + 1
+                while k < subfactors.shape[2]:
+                    subfactors[i][j][k] = candidates[j].issues[i] / candidates[k].issues[i]
+                    subfactors[i][k][j] = 1.0 / subfactors[i][j][k]
+                    k += 1
+                j += 1
+            i += 1
+
+        def norm_eigenvector(matrix):
+            return
+
+        return 'akshay to ahp'
     
 if __name__=='__main__':
     republicans = Bloc(mean=1.0, sd=0.3, quantity=1000, name="Republicans")

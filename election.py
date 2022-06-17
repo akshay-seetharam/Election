@@ -40,10 +40,10 @@ if __name__=='__main__':
     smc_electorate = Electorate(blocs=blocs, issues=issues)
     # smc_electorate.plot()
 
-    trump = Candidate('Donald John Trump', 0.7, dict(zip(issues.keys(), [-0.95, 0.8])), republicans, 0.3)
-    hillary = Candidate('Joseph Robinette Biden Jr.', dict(zip(issues.keys(), [0.75, -0.9])), democrats, 0.35)
-    stein = Candidate('Jill Stein', dict(zip(issues.keys(), [0.9, -0.7])), greens, 0.2)
-    johnson = Candidate('Gary Johnson', dict(zip(issues.keys(), [0.9, 0.95])), libs, 0.15)
+    trump = Candidate('Donald John Trump', 0.7, list(zip(issues.keys(), [-0.95, 0.8])), republicans, 0.3)
+    hillary = Candidate('Joseph Robinette Biden Jr.', list(zip(issues.keys(), [0.75, -0.9])), democrats, 0.35)
+    stein = Candidate('Jill Stein', list(zip(issues.keys(), [0.9, -0.7])), greens, 0.2)
+    johnson = Candidate('Gary Johnson', list(zip(issues.keys(), [0.9, 0.95])), libs, 0.15)
 
     candidates = [trump, hillary, stein, johnson]
     for i in candidates:
